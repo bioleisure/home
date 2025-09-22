@@ -1,103 +1,212 @@
-import Image from "next/image";
+'use client';
+import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  // 语言状态
+  const [lang, setLang] = useState('zh');
+  // tab 状态
+  const [tab, setTab] = useState('tab1');
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  // 语言持久化
+  useEffect(() => {
+    const savedLang = typeof window !== 'undefined' && localStorage.getItem('bioleisure-language');
+    if (savedLang) setLang(savedLang);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('bioleisure-language', lang);
+    }
+  }, [lang]);
+
+  return (
+    <div className={classNames('bioleisure-container', `lang-mode-${lang}`)}>
+      {/* Hero Section */}
+      <section className="bio-hero">
+        {/* 语言切换器 */}
+        <div className="lang-switcher">
+          <button
+            className={classNames('lang-switch-btn', { active: lang === 'zh' })}
+            onClick={() => setLang('zh')}
+            data-lang="zh"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            中
+          </button>
+          <button
+            className={classNames('lang-switch-btn', { active: lang === 'en' })}
+            onClick={() => setLang('en')}
+            data-lang="en"
           >
-            Read our docs
+            EN
+          </button>
+        </div>
+
+        <video
+          className="bio-hero-video-bg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="https://via.placeholder.com/1920x1080/1a1a1a/ffffff?text=Loading+Video..."
+        >
+          <source
+            src="https://assets.mixkit.co/videos/preview/mixkit-flying-through-a-virtual-world-of-glowing-plexus-41904-large.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div className="bio-hero-overlay"></div>
+        <div className="bio-hero-content">
+          <h1>
+            <span className="lang-zh">让每一个地方，都成为一个值得探索的故事。</span>
+            <span className="lang-en">Let every place become a story worth exploring.</span>
+          </h1>
+          <p>
+            <span className="lang-zh">
+              我们通过开创性的Web AR与AI叙事引擎，将您的物理空间（博物馆、商场、城市地标）转化为充满情感连接和商业活力的沉浸式冒险。
+            </span>
+            <span className="lang-en">
+              We transform your physical spaces (museums, malls, landmarks) into immersive adventures full of emotional connection and commercial vitality, using our pioneering Web AR and AI Narrative Engine.
+            </span>
+          </p>
+          <a href="#contact" className="bio-hero-cta">
+            <span className="lang-zh">预约一次演示</span>
+            <span className="lang-en">Book a Demo</span>
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Use Cases Section */}
+      <section className="bio-use-cases">
+        <h2 className="bio-use-cases-title">
+          <span className="lang-zh">为您的行业，量身定制</span>
+          <span className="lang-en">Tailored For Your Industry</span>
+        </h2>
+        <div className="tabs-container">
+          <nav className="tabs-nav">
+            <div
+              className={classNames('tab-nav-item', { active: tab === 'tab1' })}
+              data-tab="tab1"
+              onClick={() => setTab('tab1')}
+            >
+              <span className="lang-zh">文化与旅游地标</span>
+              <span className="lang-en">Cultural & Tourism Landmarks</span>
+            </div>
+            <div
+              className={classNames('tab-nav-item', { active: tab === 'tab2' })}
+              data-tab="tab2"
+              onClick={() => setTab('tab2')}
+            >
+              <span className="lang-zh">商业综合体与品牌</span>
+              <span className="lang-en">Commercial Complexes & Brands</span>
+            </div>
+            <div
+              className={classNames('tab-nav-item', { active: tab === 'tab3' })}
+              data-tab="tab3"
+              onClick={() => setTab('tab3')}
+            >
+              <span className="lang-zh">未来拓展</span>
+              <span className="lang-en">Future Verticals</span>
+            </div>
+          </nav>
+          {/* Tab 1 */}
+          <div id="tab1" className={classNames('tab-content', { active: tab === 'tab1' })}>
+            <div className="tab-content-inner">
+              <img
+                src="https://images.unsplash.com/photo-1586892330033-a911a05a4159?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600"
+                alt="Cultural & Tourism Landmarks"
+              />
+              <div className="tab-content-text">
+                <h3>
+                  <span className="lang-zh">活化历史，重塑文化体验</span>
+                  <span className="lang-en">Revitalize History, Reshape Cultural Experience</span>
+                </h3>
+                <p>
+                  <strong>
+                    <span className="lang-zh">适用对象:</span>
+                    <span className="lang-en">For:</span>
+                  </strong>
+                  <span className="lang-zh"> 博物馆、历史街区、主题公园</span>
+                  <span className="lang-en"> Museums, Historic Districts, Theme Parks</span>
+                </p>
+                <p>
+                  <span className="lang-zh">
+                    通过我们的动态叙事引擎，将历史“活化”，让游客与文物互动寻宝。我们将“一次性”的参观，升级为可分享、可重玩的深度文化体验。
+                  </span>
+                  <span className="lang-en">
+                    Our dynamic narrative engine brings history to life, allowing visitors to interact with relics and characters. We upgrade a one-time visit into a shareable, replayable, and deep cultural experience.
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          {/* Tab 2 */}
+          <div id="tab2" className={classNames('tab-content', { active: tab === 'tab2' })}>
+            <div className="tab-content-inner">
+              <img
+                src="https://images.unsplash.com/photo-1570857502907-68b382d1574a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600"
+                alt="Commercial Complexes & Brands"
+              />
+              <div className="tab-content-text">
+                <h3>
+                  <span className="lang-zh">创造话题，驱动线下增长</span>
+                  <span className="lang-en">Create Buzz, Drive Offline Growth</span>
+                </h3>
+                <p>
+                  <strong>
+                    <span className="lang-zh">适用对象:</span>
+                    <span className="lang-en">For:</span>
+                  </strong>
+                  <span className="lang-zh"> 购物中心、品牌旗舰店、生活方式地标</span>
+                  <span className="lang-en"> Shopping Malls, Flagship Stores, Lifestyle Hubs</span>
+                </p>
+                <p>
+                  <span className="lang-zh">
+                    为商场打造独家的大型实景解谜游戏，将商户串联成任务点。通过我们的情境化O2O引擎，直接拉动客流和销售额，并利用社交裂变功能引爆话题。
+                  </span>
+                  <span className="lang-en">
+                    Create exclusive LARP games for your mall, linking tenants as mission points. Our contextual O2O engine directly boosts foot traffic and sales, while igniting social media buzz.
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          {/* Tab 3 */}
+          <div id="tab3" className={classNames('tab-content', { active: tab === 'tab3' })}>
+            <div className="tab-content-inner">
+              <img
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600"
+                alt="Future Verticals"
+              />
+              <div className="tab-content-text">
+                <h3>
+                  <span className="lang-zh">赋能更多空间</span>
+                  <span className="lang-en">Empowering More Spaces</span>
+                </h3>
+                <p>
+                  <strong>
+                    <span className="lang-zh">适用对象:</span>
+                    <span className="lang-en">For:</span>
+                  </strong>
+                  <span className="lang-zh"> 教育、会展、地产</span>
+                  <span className="lang-en"> Education, Exhibitions, Real Estate</span>
+                </p>
+                <p>
+                  <span className="lang-zh">
+                    我们的技术具备高度可扩展性，可应用于互动校园导览、沉浸式展会体验、创新看房模式等多个垂直领域，为各类物理空间创造全新价值。
+                  </span>
+                  <span className="lang-en">
+                    Our technology is highly scalable and can be applied to various verticals like interactive campus tours, immersive exhibition experiences, and innovative property viewings.
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 全局样式写在全局css即可 */}
     </div>
   );
 }
