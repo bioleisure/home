@@ -70,7 +70,12 @@ export default function Home() {
               We transform your physical spaces (museums, malls, landmarks) into immersive adventures full of emotional connection and commercial vitality, using our pioneering Web AR and AI Narrative Engine.
             </span>
           </p>
-          <a href="#contact" className="bio-hero-cta">
+          <a
+            href="https://qrch.pro/ss6qv086fa8m"
+            className="bio-hero-cta"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span className="lang-zh">预约一次演示</span>
             <span className="lang-en">Book a Demo</span>
           </a>
@@ -114,7 +119,7 @@ export default function Home() {
           <div id="tab1" className={classNames('tab-content', { active: tab === 'tab1' })}>
             <div className="tab-content-inner">
               <img
-                src="https://images.unsplash.com/photo-1586892330033-a911a05a4159?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600"
+                src="/image1.jpg"
                 alt="Cultural & Tourism Landmarks"
               />
               <div className="tab-content-text">
@@ -145,7 +150,7 @@ export default function Home() {
           <div id="tab2" className={classNames('tab-content', { active: tab === 'tab2' })}>
             <div className="tab-content-inner">
               <img
-                src="https://images.unsplash.com/photo-1570857502907-68b382d1574a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600"
+                src="/image2.jpg"
                 alt="Commercial Complexes & Brands"
               />
               <div className="tab-content-text">
@@ -176,7 +181,7 @@ export default function Home() {
           <div id="tab3" className={classNames('tab-content', { active: tab === 'tab3' })}>
             <div className="tab-content-inner">
               <img
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600"
+                src="/image3.jpg"
                 alt="Future Verticals"
               />
               <div className="tab-content-text">
@@ -205,6 +210,87 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer Section */}
+      <footer className="bio-footer">
+        <div className="footer-container">
+          <div className="footer-column">
+            <h4>
+              <span className="lang-zh">关于我们</span>
+              <span className="lang-en">About Us</span>
+            </h4>
+            <ul>
+              <li>
+                <a href="#">
+                  <span className="lang-zh">公司简介</span>
+                  <span className="lang-en">Company</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span className="lang-zh">联系我们</span>
+                  <span className="lang-en">Contact</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span className="lang-zh">加入我们</span>
+                  <span className="lang-en">Careers</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-column">
+            <h4>
+              <span className="lang-zh">产品</span>
+              <span className="lang-en">Products</span>
+            </h4>
+            <ul>
+              <li>
+                <a href="#">
+                  <span className="lang-zh">Web AR 引擎</span>
+                  <span className="lang-en">Web AR Engine</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span className="lang-zh">AI 叙事引擎</span>
+                  <span className="lang-en">AI Narrative Engine</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span className="lang-zh">O2O 解决方案</span>
+                  <span className="lang-en">O2O Solutions</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-column">
+            <h4>
+              <span className="lang-zh">法律</span>
+              <span className="lang-en">Legal</span>
+            </h4>
+            <ul>
+              <li>
+                <a href="#">
+                  <span className="lang-zh">隐私政策</span>
+                  <span className="lang-en">Privacy Policy</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span className="lang-zh">服务条款</span>
+                  <span className="lang-en">Terms of Service</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2025 BioLeisure. All Rights Reserved.</p>
+        </div>
+      </footer>
 
       {/* 全局样式写在全局css即可 */}
     </div>
