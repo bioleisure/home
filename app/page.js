@@ -119,7 +119,7 @@ export default function Home() {
           <div id="tab1" className={classNames('tab-content', { active: tab === 'tab1' })}>
             <div className="tab-content-inner">
               <img
-                src="/image1.jpg"
+                src="image1.jpg"
                 alt="Cultural & Tourism Landmarks"
               />
               <div className="tab-content-text">
@@ -150,7 +150,7 @@ export default function Home() {
           <div id="tab2" className={classNames('tab-content', { active: tab === 'tab2' })}>
             <div className="tab-content-inner">
               <img
-                src="/image2.jpg"
+                src="image2.jpg"
                 alt="Commercial Complexes & Brands"
               />
               <div className="tab-content-text">
@@ -181,7 +181,7 @@ export default function Home() {
           <div id="tab3" className={classNames('tab-content', { active: tab === 'tab3' })}>
             <div className="tab-content-inner">
               <img
-                src="/image3.jpg"
+                src="image3.jpg"
                 alt="Future Verticals"
               />
               <div className="tab-content-text">
